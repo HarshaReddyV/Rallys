@@ -1,0 +1,80 @@
+{% extends "home/layout.html" %}
+{% load static %}
+
+{% block styles%}
+  <style>
+    #top
+    {
+        border: solid 0.25px lightgray; 
+        border-radius: 12px;
+        margin-top: 5px;
+    }
+    #data
+    {
+        display: block;
+    }
+    
+    #link{
+      text-decoration: none;
+      
+      color: rgb(148, 147, 147);
+    }
+    #link:hover
+    {
+      #title{
+        color: skyblue;
+      }
+      #top{
+        border: solid 0.40px skyblue;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content%}
+
+  {% for item in tickers %}
+  <a id="link" href="{% url 'details' item.id %} ">
+    <div id="top" class="container-lg text-center">
+      <div class="row align-items-center">
+        <div class="col-9 col-md-7">
+         <h1 id="title"> {{ item.title }} </h1>
+        </div>
+        <div class="col-6 col-md-1">
+          <h6>NSE</h6>
+          <h6>25.95</h6>
+        </div>
+        <div class="col-6 col-md-1">
+          <h6>BSE</h6>
+          <h6>25.95</h6>
+        </div>
+        <div class="col-4 col-md-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+          </svg>
+          <h6>234</h6>
+        </div>
+        <div class="col-4 col-md-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+              <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+          </svg>
+          <h6>234</h6>
+        </div>
+        <div class="col-4 col-md-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+          </svg>
+          <h6>234</h6>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  {% endfor %}
+  
+{% endblock %}

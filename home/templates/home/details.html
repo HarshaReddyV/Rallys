@@ -1,0 +1,52 @@
+{% extends "home/layout.html" %}
+{% load static %}
+
+{% block styles%}
+  <style>
+   #top
+    {
+        border: solid 0.25px lightgray; 
+        border-radius: 12px;
+        margin-top: 5px;
+    }
+    #data
+    {
+        display: block;
+    }
+    
+    #link{
+      text-decoration: none;
+      
+      color: rgb(148, 147, 147);
+    }
+    #link:hover
+    {
+      #title{
+        color: skyblue;
+      }
+      #top{
+        border: solid 0.40px skyblue;
+      }
+    }
+    
+
+    
+  </style>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content%}
+  
+  <a id="link" href="{% url 'under'%}">
+    <div id="top" class="container-lg text-center">
+      <div class="row align-items-center">
+        <div class="col-9 col-md-7">
+         <h1 id="title"> {{ item.description }} </h1>
+        </div>
+    </div>
+  </a> 
+
+{% endblock %}
