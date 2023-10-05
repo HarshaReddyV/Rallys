@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 class User(AbstractUser):
     firstName = models.CharField(max_length= 20, null = True)
     lastName = models.CharField(max_length= 20, null=True)
+    email = models.EmailField(blank = False, unique = True)
     pass
   
 

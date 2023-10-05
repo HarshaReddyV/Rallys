@@ -32,6 +32,14 @@ CSRF_TRUSTED_ORIGINS = ['https://rallyspro.azurewebsites.net/','https://*.127.0.
 CSRF_ALLOWED_ORIGINS = ['https://rallyspro.azurewebsites.net/']
 CORS_ORIGINS_WHITELIST = ['https://rallyspro.azurewebsites.net/']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+AUTH_USER_MODEL = 'home.User'
+STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+AUTHENTICATION_BACKENDS = ['home.backends.EmailBackend']
+
+
+
 
 # Application definition
 
@@ -109,10 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-AUTH_USER_MODEL = 'home.User'
-STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 
 # Internationalization

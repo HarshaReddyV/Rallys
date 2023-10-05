@@ -6,6 +6,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from .models import Tickers, User
 
+
 # Create your views here.
 def index(request):
     tickers = Tickers.objects.all()  
@@ -23,7 +24,7 @@ def signup(request):
     if request.method == "POST":
 
         username = request.POST["username"].strip()
-        email = request.POST["email"].strip().lower()
+        email = request.POST["email"].strip()
         password = request.POST["password"].strip()
         confirmation = request.POST["confirmation"].strip()
         
@@ -89,7 +90,7 @@ def signup(request):
 
 def signin(request):
     if request.method == "POST":
-        email = request.POST["email"].strip().lower()
+        email = request.POST["email"].strip()
         password = request.POST["password"].strip()
 
         user = authenticate(username = email, password=password)
@@ -97,7 +98,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             return render(request, 'home/index.html')
-        return render(request, 'home/signup.html', {"message": "login failed"})   
+        return render(request, 'home/signup.html', {"message": 'User not found, Try signing up'})   
     elif request.method == 'GET':
         return render(request, "home/signin.html")
 
