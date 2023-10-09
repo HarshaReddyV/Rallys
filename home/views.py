@@ -10,16 +10,13 @@ import os
 
 # Create your views here.
 def index(request):
-    tickers = Tickers.objects.all()  
+    tickers = Tickers.objects.all() 
     return render(request, "home/index.html", {
-        'tickers': tickers 
+        'tickers': tickers
     })
 
 def under(request):
     return render(request, 'home/under.html')
-
-    
-
 
 def signup(request):
     if request.method == "POST":
@@ -98,7 +95,7 @@ def signin(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return render(request, 'home/index.html')
+            return redirect('home')
         return render(request, 'home/signup.html', {"message": 'User not found, Try signing up'})   
     elif request.method == 'GET':
         return render(request, "home/signin.html")
@@ -106,7 +103,6 @@ def signin(request):
 def signout(request):
     logout(request)
     return render(request, 'home/index.html')
-
 
 def profile(request):
     return render(request, 'home/profile.html')
@@ -116,7 +112,6 @@ def details(request, id):
     return render(request, 'home/details.html', {
         'item': item
     })
-
 
 def register(request):
     if request.method == "POST":
@@ -144,18 +139,38 @@ def register(request):
     else:
         return render(request, "home/signup.html")
 
-
 def data(request):
+    Tickers.objects.all().delete()
     csv_file_path = os.path.abspath('home/nse.csv')
     with open(csv_file_path, 'r',newline='') as file:
         stocks = csv.DictReader(file)
-
+     
         for stock in stocks:
             ticker = Tickers(
-                title = stock['SYMBOL'],
-                description = stock['NAME OF COMPANY']
+                title = stock['NAME OF COMPANY'],
+                nseCode = stock['SYMBOL']
             )
             ticker.save()
+
        
 
     return HttpResponse('bhenchod..11')
+
+def search(request):
+    if request.method == 'POST':
+        text = request.POST['search_term'].strip()
+        results = list(Tickers.objects.filter(title__icontains = text))
+        # results = []
+        # for item in items:
+        #     item = item.lower()
+        #     if text in item:
+        #         results.append(item)
+        
+        return render(request, 'home/search.html',
+        {
+            'results': results
+        })
+        return HttpResponse(text)
+
+     
+    return HttpResponse('search is here')

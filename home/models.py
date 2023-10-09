@@ -15,8 +15,8 @@ class Tickers(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, blank=False)
     description = models.TextField(max_length=500, blank=False, default='This is a Product..!')
-    bse_code = models.CharField(max_length=20)
-    nse_code = models.CharField(max_length=20)
+    bseCode = models.CharField(max_length=20)
+    nseCode = models.CharField(max_length=20)
 
     def __str__(self):
         return (self.title)
