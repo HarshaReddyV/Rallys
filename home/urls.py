@@ -9,5 +9,6 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('signout', views.signout, name='signout'),
     path('share/<int:id>', views.details, name ='details'),
-    path('register', views.register, name='register')
+    path('register', views.register, name='register'),
+    path('data', views.data, name='data')
 ]

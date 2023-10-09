@@ -5,7 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from .models import Tickers, User
-
+import csv
+import os
 
 # Create your views here.
 def index(request):
@@ -142,3 +143,19 @@ def register(request):
         return HttpResponseRedirect(reverse("home"))
     else:
         return render(request, "home/signup.html")
+
+
+def data(request):
+    csv_file_path = os.path.abspath('home/nse.csv')
+    with open(csv_file_path, 'r',newline='') as file:
+        stocks = csv.DictReader(file)
+
+        for stock in stocks:
+            ticker = Tickers(
+                title = stock['SYMBOL'],
+                description = stock['NAME OF COMPANY']
+            )
+            ticker.save()
+       
+
+    return HttpResponse('bhenchod..11')
