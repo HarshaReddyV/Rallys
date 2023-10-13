@@ -8,11 +8,7 @@
 {% endblock %}
 
 {% block content%}
-  {% if results %}
-    {% for result in results %}
-      <div><h4>{{result}}</h4></div>
-    {% endfor %}
-  {% endif %}
+
   
   
 
@@ -28,6 +24,18 @@
     </form>
   </div>
   
+  {% if search_results %}
+    {% for result in search_results %}
+    <a id="link" href="{% url 'details' result.id %} ">
+      <div id="topbox" class="">
+        <div  id="databox"class="">    
+           <h3> {{result.title}} </h6>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  {% endif %}
+
   {% for item in tickers %}
   <a id="link" href="{% url 'details' item.id %} ">
     <div id="topbox" class="">

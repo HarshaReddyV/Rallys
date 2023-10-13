@@ -139,6 +139,18 @@ def register(request):
     else:
         return render(request, "home/signup.html")
 
+
+
+def search(request):
+    if request.method == 'POST':
+        text = request.POST['search_term'].strip()
+        results = list(Tickers.objects.filter(title__icontains = text))
+        return render(request, 'home/index.html',
+        {
+            'search_results': results
+        })
+    return redirect('home')
+
 def data(request):
     Tickers.objects.all().delete()
     csv_file_path = os.path.abspath('home/nse.csv')
@@ -150,27 +162,5 @@ def data(request):
                 title = stock['NAME OF COMPANY'],
                 nseCode = stock['SYMBOL']
             )
-            ticker.save()
-
-       
-
+            ticker.save()        
     return HttpResponse('bhenchod..11')
-
-def search(request):
-    if request.method == 'POST':
-        text = request.POST['search_term'].strip()
-        results = list(Tickers.objects.filter(title__icontains = text))
-        # results = []
-        # for item in items:
-        #     item = item.lower()
-        #     if text in item:
-        #         results.append(item)
-        
-        return render(request, 'home/search.html',
-        {
-            'results': results
-        })
-        return HttpResponse(text)
-
-     
-    return HttpResponse('search is here')
