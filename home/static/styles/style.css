@@ -13,6 +13,7 @@ body {
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .search-input {
@@ -25,7 +26,7 @@ body {
 }
 
 .search-button {
-    background-color: #007bff;
+    background-color: #026ddf;
     color: #fff;
     border: none;
     border-radius: 20px; /* Rounded corners */
@@ -34,9 +35,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.search-button:hover {
-    background-color: #0056b3;
-}
+
 
 /* Style for the SVG icon */
 .search-icon {
@@ -45,7 +44,7 @@ body {
     height: 20px;
     margin-right: 10px; /* Spacing between icon and input */
 }
- #link{
+#link{
   text-decoration: none;
   color:gray;
 }
@@ -56,17 +55,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 12px;
-}
-#topbox :hover{
-  color: lightskyblue;
+  margin-bottom: 15px;
 }
 
-#databox{
-  
+
+#databox{ 
+
   background-color: white;
-  width: 70%;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 70%;
+
+  @media screen and (max-width: 600px) {
+    width: 95%;
+  }
+}
+
+#databox:hover
+{
+    border: solid 1px lightskyblue;
+    color: lightskyblue;
 }

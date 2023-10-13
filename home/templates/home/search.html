@@ -38,11 +38,9 @@
   {% if results %}
     {% for result in results %}
     <a id="link" href="{% url 'details' result.id %} ">
-      <div id="top" class="container-lg text-center">
-        <div class="row align-items-center">
-          <div class="col">
-           <h1 id="title"> {{ result.title }} </h1>
-          </div>
+      <div id="topbox" class="">
+        <div  id="databox"class="">    
+           <h3> {{result.title}} </h6>
         </div>
       </div>
     </a>
