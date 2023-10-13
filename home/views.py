@@ -139,8 +139,6 @@ def register(request):
     else:
         return render(request, "home/signup.html")
 
-
-
 def search(request):
     if request.method == 'POST':
         text = request.POST['search_term'].strip()
