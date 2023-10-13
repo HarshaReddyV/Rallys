@@ -102,7 +102,7 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return render(request, 'home/index.html')
+    return redirect('home')
 
 def profile(request):
     return render(request, 'home/profile.html')

@@ -30,7 +30,7 @@ body {
 .search {
     height: 44px;
     width: 584px;
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
         width: 300px;
     }
     line-height: 44px;
@@ -59,16 +59,14 @@ body {
   margin-bottom: 15px;
 }
 
-
 #databox{ 
-
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 70%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     width: 95%;
   }
 }
