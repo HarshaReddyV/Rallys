@@ -14,7 +14,7 @@ class User(AbstractUser):
 class Tickers(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, blank=False)
-    description = models.TextField(max_length=500, blank=False, default='This is a Product..!')
+    description = models.TextField(max_length=500, blank=False, default='')
     bseCode = models.CharField(max_length=20)
     nseCode = models.CharField(max_length=20)
 

@@ -45,13 +45,14 @@ AUTHENTICATION_BACKENDS = ['home.backends.EmailBackend']
 
 INSTALLED_APPS = [
     'home',
+    'forum',
     'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
