@@ -9,8 +9,12 @@ import csv
 import os
 
 # Create your views here.
+def Get_All_Tickers():
+    tickers = Tickers.objects.all()
+    return tickers
+
 def index(request):
-    tickers = Tickers.objects.all() 
+    tickers = Get_All_Tickers()
     return render(request, "home/index.html", {
         'tickers': tickers
     })
@@ -143,9 +147,11 @@ def search(request):
     if request.method == 'POST':
         text = request.POST['search_term'].strip()
         results = list(Tickers.objects.filter(title__icontains = text))
+        tickers = Get_All_Tickers()
         return render(request, 'home/index.html',
         {
-            'search_results': results
+            'search_results': results,
+            'tickers': tickers
         })
     return redirect('home')
 
