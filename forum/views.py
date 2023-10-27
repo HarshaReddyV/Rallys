@@ -26,5 +26,7 @@ def add(request, id):
         return redirect(f'/share/{id}')
 
 
+@login_required(login_url='signin')
 def topic(request, id):
-    return HttpResponse('This is where the real work goes on...')
+    topic = Topic.objects.get(id = id)
+    return render(request, 'forum/topic.html', {'topic': topic})
