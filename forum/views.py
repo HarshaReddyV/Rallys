@@ -12,7 +12,7 @@ def add(request, id):
         description = request.POST['description'].strip()
         if topic == '':
             return render(request, 'forum/add.html',{
-                'message': "Title Cannot be Empty",
+                'message': "Summary Cannot be empty",
                 'id': id})
         
         parent = Tickers.objects.get(id = id)
@@ -25,3 +25,6 @@ def add(request, id):
         Tickers.save(item)
         return redirect(f'/share/{id}')
 
+
+def topic(request, id):
+    return HttpResponse('This is where the real work goes on...')

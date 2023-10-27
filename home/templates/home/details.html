@@ -13,5 +13,16 @@
       <button class="btn btn-primary">Add Topic</button>
     </a>
   </div>
+  {% if topics %}
+    {% for topic in topics %}
+    <a id="link" href="{% url 'topic' topic.id %} ">
+      <div  class="container container-sm bg-light my-3">
+        <div  class="">    
+           <h3> {{topic.title}}</h6>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  {% endif %}
    
 {% endblock %}

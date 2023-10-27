@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from .models import Tickers, User
+from forum.models import Topic, Comment
 import csv
 import os
 
@@ -111,8 +112,10 @@ def profile(request):
     
 def details(request, id):
     item = Tickers.objects.get(id = id)
+    topics = Topic.objects.filter(parent_ticker = item)
     return render(request, 'home/details.html', {
-        'item': item
+        'item': item,
+        'topics': topics
     })
 
 def register(request):
