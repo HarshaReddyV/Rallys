@@ -13,15 +13,15 @@
     <div class="form-group my-3">
         <form action="{% url 'add' id %}" method="post">
             {% csrf_token %}
-            <input class="form-control form-control-lg my-3" type="text" placeholder="Enter topic summary">
-            <textarea class="form-control my-3" placeholder="Describe more (Optional)" rows="5"></textarea>
+            {% if message%}
+               <div class="text-danger">{{message}}</div>
+            {% endif %}
+            <input class="form-control form-control-lg my-3" name="topic" type="text" placeholder="Enter topic summary">
+            <textarea class="form-control my-3" name="description" placeholder="Describe more (Optional)" rows="5"></textarea>
             <div class="containe d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary"> ADD</button>
             </div>
         </form>
-        
     </div>
-    
-  </div>
-   
+  </div>  
 {% endblock %}
