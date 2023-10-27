@@ -19,6 +19,7 @@
                 <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                   
                 </div>
+
                 {% if message %}
                 <div class="text-warning" >{{ message }}</div>
                 {% endif %}
@@ -59,11 +60,6 @@
         
       </section>
       
-      <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
     
       
 {% endblock %}

@@ -8,12 +8,10 @@
 {% endblock %}
 
 {% block content%}
-   <button class="btn btn-primary">Add Topic</button>
-  <a id="link" href="{% url 'under'%}">
-    <div id="topbox" class="">
-      <div  id="databox"class="">    
-        <h1 id="title"> {{ item.description }} </h1>
-      </div>
-    </div>
-  </a> 
+  <div class="container container-lg d-flex justify-content-center">
+    <a href="{% url 'add' item.id %}">
+      <button class="btn btn-primary">Add Topic</button>
+    </a>
+  </div>
+   
 {% endblock %}

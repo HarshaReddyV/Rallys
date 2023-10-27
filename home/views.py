@@ -19,8 +19,6 @@ def index(request):
         'tickers': tickers
     })
 
-def under(request):
-    return render(request, 'home/under.html')
 
 def signup(request):
     if request.method == "POST":
