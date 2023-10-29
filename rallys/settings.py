@@ -46,6 +46,7 @@ AUTHENTICATION_BACKENDS = ['home.backends.EmailBackend']
 INSTALLED_APPS = [
     'home',
     'forum',
+    'ckeditor',
     'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -142,3 +143,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#CK_EDITOR CONFIGURATION
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar_Basic': [
+            ['Bold', 'Italic']
+        ],
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'clipboard', 'items': ['Undo', 'Redo']},
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList']},
+            {'name': 'links', 'items': ['Link']},
+            {'name': 'colors', 'items': ['TextColor']},
+            {'name': 'tools', 'items': ['Maximize']}
+        ],
+        'toolbar': 'YourCustomToolbarConfig'
+    }
+}
