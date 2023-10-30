@@ -13,12 +13,20 @@
       <button class="btn btn-primary">Add Topic</button>
     </a>
   </div>
+  <div>
+    {% for k, v in stock.items %}
+        <h4>{{k}}:</h4> 
+        <h3>{{v}}</h3>
+    {% endfor %} 
+     
+  </div>
   {% if topics %}
     {% for topic in topics %}
     <a id="link" href="{% url 'topic' topic.id %} ">
       <div  class="container container-sm bg-light my-3">
         <div  class="">    
-           <h3> {{topic.title}}</h6>
+           <h3> {{topic.title}}</h3>
+          
         </div>
       </div>
     </a>
