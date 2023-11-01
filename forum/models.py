@@ -2,6 +2,8 @@ from django.db import models
 from home.models import Tickers 
 from datetime import datetime
 from rallys import settings
+from ckeditor.fields import RichTextField
+
 
 class Topic(models.Model):
     title = models.CharField(max_length=70, blank= False, null = False)
@@ -11,6 +13,7 @@ class Topic(models.Model):
     time = models.DateTimeField(default=datetime.now)
     views = models.IntegerField(default = 0)
     comments = models.IntegerField(default= 0)
+    content = RichTextField(null = True, blank = True)
     def __str__(self):
         return self.title
 

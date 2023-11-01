@@ -8,6 +8,7 @@ from .models import Tickers, User
 from forum.models import Topic, Comment
 import csv
 import os
+import yfinance as yf
 
 # Create your views here.
 def Get_All_Tickers():
@@ -113,9 +114,14 @@ def profile(request):
 def details(request, id):
     item = Tickers.objects.get(id = id)
     topics = Topic.objects.filter(parent_ticker = item)
+    code = (f'{item.nseCode}.NS')
+    msft = yf.Ticker(code)
+    stock = msft.fast_info
+    
     return render(request, 'home/details.html', {
         'item': item,
-        'topics': topics
+        'topics': topics,
+        'stock': stock
     })
 
 def register(request):
