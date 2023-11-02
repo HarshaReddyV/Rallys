@@ -160,8 +160,7 @@ CKEDITOR_CONFIGS = {
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList']},
             {'name': 'links', 'items': ['Link']},
-            {'name': 'colors', 'items': ['TextColor']},
-            {'name': 'tools', 'items': ['Maximize']}
+            {'name': 'colors', 'items': ['TextColor']}
         ],
         'toolbar': 'YourCustomToolbarConfig'
     }

@@ -10,9 +10,24 @@
 {% endblock %}
 
 {% block content%}
-  <div class="container container-lg">
-    <div>{{topic.title}}</div>
-    <div>{{topic.description}}</div>
-  </div>  
+
+<a id="link" href=" ">
+  <div id="topbox" class="">
+    <div  id="databox"class="">    
+       <h3> {{topic.title}} </h3>
+       <div>{{topic.description | safe}}</div>
+    </div>
+  </div>
+</a>
+
+<form action="{% url 'comment' topic.id %}" method="post">
+  {% csrf_token %}
+  <div class="container container-lg d-flex justify-content-center" id="texteditor"> 
+    {{form.media}}
+    {{form.text | safe}}
+  </div>
+  <div class="container container-lg d-flex justify-content-center"> <button class="btn btn-primary" type="submit">Comment</button></div>
+</form>
+
 
 {% endblock %}
