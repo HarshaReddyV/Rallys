@@ -32,16 +32,36 @@
       </div>
       <div class="col-md-3">
         <table class="table">
-          <tbody>
-            {% if stock %}
-            {% for k, v in stock.items %}
-              <tr>
-                <td>{{k}}</td>
-                <td>{{v}}</td>    
-              </tr>
-            {% endfor %} 
-            {% endif %}
+          <tbody> 
 
+              <tr>
+                <td>Last Price</td>
+                <td>{{lastPrice}}</td>    
+              </tr>
+              <tr>
+                <td>Day High</td>
+                <td>{{dayHigh}}</td>    
+              </tr>
+              <tr>
+                <td>Day Low</td>
+                <td>{{dayLow}}</td>    
+              </tr>
+              <tr>
+                <td>Volume</td>
+                <td>{{volume}}</td>    
+              </tr>
+              <tr>
+                <td>Open</td>
+                <td>{{openPrice}}</td>    
+              </tr>
+              <tr>
+                <td>Previous Close</td>
+                <td>{{prevClose}}</td>    
+              </tr>
+              <tr>
+                <td>Market Cap.</td>
+                <td>{{markCap}} Cr</td>    
+              </tr>
           </tbody>
         </table>
       </div>

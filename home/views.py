@@ -114,14 +114,30 @@ def profile(request):
 def details(request, id):
     item = Tickers.objects.get(id = id)
     topics = Topic.objects.filter(parent_ticker = item)
-    code = (f'{item.nseCode}.NS')
-    msft = yf.Ticker(code)
-    stock = msft.fast_info
-    
+    try:
+        code = (f'{item.nseCode}.NS')
+        msft = yf.Ticker(code)
+        stock = msft.fast_info
+        lastPrice = round(stock.last_price,2)
+        dayLow = round(stock.day_low, 2 ) 
+        dayHigh = round(stock.day_high,2)
+        markCap = round(stock.market_cap/10000000,2)
+        openPrice = round(stock.open,2)
+        prevClose = round(stock.previous_close,2)
+        volume = round(stock.last_volume,2)
+    except:
+        print('Some Error Occurred in Api call of stock price')
+
     return render(request, 'home/details.html', {
         'item': item,
         'topics': topics,
-        'stock': stock
+        'lastPrice' : lastPrice,
+        'dayLow': dayLow,
+        'dayHigh': dayHigh,
+        'volume': volume,
+        'markCap': markCap,
+        'openPrice': openPrice,
+        'prevClose': prevClose
     })
 
 def register(request):
