@@ -16,7 +16,7 @@ def go_back(request):
         return redirect(previous_page)
     else:
         # If there's no previous page, redirect to a default URL or handle it accordingly
-        return redirect('your_default_url_name')
+        return redirect('index')
 
 
 
@@ -46,9 +46,11 @@ def add(request, id):
 @login_required(login_url='signin')
 def topic(request, id):
     topic = Topic.objects.get(id = id)
+    comments = Comment.objects.filter(topic = topic)
     form = CommentForm()
     return render(request, 'forum/topic.html', {
         'topic': topic,
+        'comments': comments,
         'form': form
         })
 
