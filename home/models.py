@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.core.exceptions import ValidationError
-
+from rallys import settings
 
 # Create your models here.
 class User(AbstractUser):
@@ -21,3 +21,7 @@ class Tickers(models.Model):
     def __str__(self):
         return (self.title)
     
+
+class WatchList(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    tickers = models.ForeignKey(Tickers, on_delete=models.CASCADE)

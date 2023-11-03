@@ -10,7 +10,18 @@ import csv
 import os
 import yfinance as yf
 
-# Create your views here.
+def go_back(request):
+    # Get the HTTP_REFERER from the request's META information
+    previous_page = request.META.get('HTTP_REFERER')
+    
+    if previous_page:
+        # If the HTTP_REFERER is available, redirect to it
+        return redirect(previous_page)
+    else:
+        # If there's no previous page, redirect to a default URL or handle it accordingly
+        return redirect('index')
+
+
 def Get_All_Tickers():
     tickers = Tickers.objects.all()
     return tickers
@@ -191,3 +202,9 @@ def data(request):
             )
             ticker.save()        
     return HttpResponse('bhenchod..11')
+
+def watch(request, id):
+    stock = Tickers.objects.get(id = id)
+    user = User.objects.get(id = request.user.id)
+    return HttpResponse('done') 
+#redirect(f'/share/{id}', added = True)

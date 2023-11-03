@@ -10,6 +10,7 @@ urlpatterns = [
     path('share/<int:id>', views.details, name ='details'),
     path('register', views.register, name='register'),
     path('search', views.search, name='search'),
+    path('watch/<int:id>', views.watch, name ='watch'),
     path('data', views.data, name='data'),
 
 ]
