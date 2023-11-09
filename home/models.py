@@ -22,5 +22,5 @@ class User(AbstractUser):
     pass
   
 class WatchList(models.Model):
-    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user')
+    customer = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE,default= None)
     stocks = models.ManyToManyField(Tickers, related_name='user_stocks')
