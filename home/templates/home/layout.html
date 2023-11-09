@@ -7,13 +7,13 @@
     <title>Rallys</title>
     <link rel="icon" type="image/png" href="{% static 'images/bw.png'%}">
     <link rel="stylesheet" href="{% static 'styles/style.css'%}">
-
+   
     {% block styles %}
     {% endblock %}
 
     {% block scripts %}
     {% endblock %}
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   </head>
   <body>
@@ -75,8 +75,25 @@
       {% block content %}
       {% endblock %}
 
-   
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script type="text/javascript"> 
+        // Your JavaScript
+        $(document).ready(function () {
+            $('#search-input').on('input', function () {
+                const query = $(this).val();
+                $.ajax({
+                    url: '/typeahead/',  // Your typeahead view URL
+                    data: {'query': query},
+                    dataType: 'json',
+                    success: function (data) {
+                        // Handle the returned data (e.g., populate a dropdown)
+                        console.log('success')
+                        console.log(data);
+                    }
+                });
+            });
+        });
+      </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -31,19 +31,7 @@
 
   <div class="container">
     <div class="row align-items-start">
-      <div class="col-md-9">
-        {% if topics %}
-          {% for topic in topics %}
-          <a id="link" href="{% url 'topic' topic.id %} ">
-            <div  class="container container-sm bg-light my-3">
-              <div  class="">    
-                <h3> {{topic.title}} </h3>     
-              </div>
-            </div>
-          </a>
-          {% endfor %}
-        {% endif %}
-      </div>
+      
       <div class="col-md-3">
         <table class="table">
           <tbody> 
@@ -79,13 +67,21 @@
           </tbody>
         </table>
       </div>
-      
-    </div>
-  </div>
-  <div>
-    
-    
-     
+
+      <div class="col-md-9">
+        {% if topics %}
+          {% for topic in topics %}
+          <a id="link" href="{% url 'topic' topic.id %} ">
+            <div  class="container container-sm bg-light my-3">
+              <div  class="">    
+                <h3> {{topic.title}} </h3>     
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>    
   </div>
   
    

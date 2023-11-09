@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 from django.core.exceptions import ValidationError
-from rallys import settings
+from rallys.settings import AUTH_USER_MODEL
 
 # Create your models here.
 
@@ -22,5 +22,5 @@ class User(AbstractUser):
     pass
   
 class WatchList(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    stocks = models.ManyToManyField(Tickers, related_name='user_watchlist')
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user')
+    stocks = models.ManyToManyField(Tickers, related_name='user_stocks')

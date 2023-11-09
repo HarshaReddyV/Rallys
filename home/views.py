@@ -9,6 +9,10 @@ from forum.models import Topic, Comment
 import csv
 import os
 import yfinance as yf
+from django.http import JsonResponse
+from django.views import View
+
+
 
 def go_back(request):
     # Get the HTTP_REFERER from the request's META information
@@ -206,5 +210,13 @@ def data(request):
 def watch(request, id):
     stock = Tickers.objects.get(id = id)
     user = User.objects.get(id = request.user.id)
+
     return HttpResponse('done') 
-#redirect(f'/share/{id}', added = True)
+
+
+
+class TypeaheadView(View):
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get('query', '')
+        results = Tickers.objects.filter(title__icontains=query).values('title')
+        return JsonResponse(list(results), safe=False)

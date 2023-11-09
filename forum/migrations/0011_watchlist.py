@@ -8,7 +8,9 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0005_alter_tickers_description'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('home', '0006_watchlist'),
+        ('forum', '0010_rename_content_topic_description'),
     ]
 
     operations = [
@@ -16,8 +18,8 @@ class Migration(migrations.Migration):
             name='WatchList',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('stocks', models.ManyToManyField(related_name='user_stocks', to='home.tickers')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user', to=settings.AUTH_USER_MODEL)),
+                ('stocks', models.ManyToManyField(related_name='user_watchlist', to='home.tickers')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
